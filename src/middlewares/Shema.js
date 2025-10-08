@@ -36,3 +36,5 @@ const ProductSchema = yup.object({
         .string()
         .required('Category is required'),
 });
+const shema={UserSchema,ProductSchema};
+module.exports=shema;
