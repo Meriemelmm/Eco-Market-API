@@ -8,4 +8,4 @@ CategoryShema= new mongoose.Schema({
 
 })
 var category= new mongoose.model('Category',CategoryShema);
-exports.module=category;
+module.exports=category;

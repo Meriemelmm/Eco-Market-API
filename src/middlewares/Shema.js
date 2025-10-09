@@ -14,14 +14,17 @@ const UserSchema = yup.object({
         .required('Password is required')
         .min(8, 'Password must be at least 8 characters'),
 });
+const CategoryShema=yup.object({
+    name:yup.string().required('Category name is required ').min(3, 'name  must be at least 3 characters')
+})
 
 const ProductSchema = yup.object({
     title: yup
         .string()
-        .required('Product name is required'),
+        .required('Product name is required').min(3, 'title must be at least 3 characters'),
     description: yup
         .string()
-        .required('Description is required'),
+        .required('Description is required').min(3, 'description must be at least 3 characters'),
     price: yup
         .number()
         .positive('Price must be positive')
@@ -36,5 +39,5 @@ const ProductSchema = yup.object({
         .string()
         .required('Category is required'),
 });
-const shema={UserSchema,ProductSchema};
+const shema={UserSchema,CategoryShema,ProductSchema};
 module.exports=shema;
