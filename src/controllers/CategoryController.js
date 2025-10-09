@@ -2,6 +2,7 @@ const Category=require('../models/CategoryModel');
 class CategoryController{
 
  createCatgeory= async(req,res)=>{
+   
 try{
    const newCategory= await Category.create({name:req.body.name});  
    res.status(201).json({message:"category added",newCategory:newCategory}); 
