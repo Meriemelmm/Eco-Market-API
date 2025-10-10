@@ -3,10 +3,9 @@ class ProductController {
     getAllProduct = async (req, res) => {
         try {
 
-            const AllProduct = await Product.find({ isDeleted: false });
-
-            if (!AllProduct) {
-                res.status(400).json({ message: "not found " });
+            const AllProduct = await Product.find({ isDeleted: false }).populate('categories');
+            if (!AllProduct || AllProduct.length === 0) {
+                return res.status(404).json({ message: "No products found" });
             }
             res.status(200).json({ message: "all products", products: AllProduct });
 
@@ -24,13 +23,12 @@ class ProductController {
                 price: req.body.price,
                 stock: req.body.stock,
                 imageUrl: req.body.imageUrl || "",
+                categories: req.body.categories
             });
 
             res.status(201).json({ message: "Product added", product: newProduct });
 
 
-            await newProduct.save();
-            res.status(201).json({ message: "product added ", newProduct });
 
         }
         catch (err) {
@@ -43,7 +41,8 @@ class ProductController {
     getProduit = async (req, res) => {
 
         try {
-            const findProduct = await Product.findById({ _id: req.params.id });
+            const findProduct = await Product.findById(req.params.id).populate('categories');
+
             if (!findProduct) {
                 res.status(400).json({ message: "not found" });
             }
@@ -54,29 +53,29 @@ class ProductController {
             res.status(500).json({ error: err.message });
         }
     }
-   deleteProduct = async (req, res) => {
-  try {
-    const { id } = req.params; 
+    deleteProduct = async (req, res) => {
+        try {
+            const { id } = req.params;
 
-   
-    const deletedProduct = await Product.findByIdAndUpdate(
-      id,
-      { isDeleted: true },
-      { new: true }
-    );
 
-    if (!deletedProduct) {
-      return res.status(404).json({ message: "Product not found" });
-    }
+            const deletedProduct = await Product.findByIdAndUpdate(
+                id,
+                { isDeleted: true },
+                { new: true }
+            );
 
-    res.status(200).json({
-      message: "Product deleted successfully",
-      deletedProduct,
-    });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-};
+            if (!deletedProduct) {
+                return res.status(404).json({ message: "Product not found" });
+            }
+
+            res.status(200).json({
+                message: "Product deleted successfully",
+                deletedProduct,
+            });
+        } catch (err) {
+            res.status(500).json({ error: err.message });
+        }
+    };
 
     updateProduct = async (req, res) => {
         try {
@@ -87,7 +86,8 @@ class ProductController {
                 category: req.body.category,
                 price: req.body.price,
                 stock: req.body.stock,
-                imageUrl: req.body.imageUrl ? req.body.imageUrl : ""
+                imageUrl: req.body.imageUrl ? req.body.imageUrl : "",
+                categories: req.body.categories
             }
             const updateOne = await Product.findByIdAndUpdate(ProductId, UpdateData, { new: true });
             if (!updateOne) {
