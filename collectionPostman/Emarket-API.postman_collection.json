@@ -1,0 +1,448 @@
+{
+	"info": {
+		"_postman_id": "4948bf50-cf9e-4a66-bea8-668416f44cfd",
+		"name": "Emarket-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43009833"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "allUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"douae el retsts \",\r\n    \"email\":\"douaehhhr.com\",\r\n    \"password\":\"azertyu\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/users",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/68e663f30a9bbb9a5bed713d",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"68e663f30a9bbb9a5bed713d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/68e663f30a9bbb9a5bed713d",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"68e663f30a9bbb9a5bed713d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "addProduct",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"eeee\",\r\n    \"description\":\"dddddddd\",\r\n    \"category\":\"etry\",\r\n    \"price\":45,\r\n    \"stock\":120\r\n    \r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/products",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "allProducts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"eeee\",\r\n    \"description\":\"dddddddd\",\r\n    \"category\":\"etry\",\r\n    \"price\":45,\r\n    \"stock\":120\r\n    \r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/products",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProduct",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"eeee\",\r\n    \"description\":\"dddddddd\",\r\n    \"category\":\"etry\",\r\n    \"price\":45,\r\n    \"stock\":120\r\n    \r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/products/68e6be4c19d602ff99c36572",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"68e6be4c19d602ff99c36572"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeProduct",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"eeee\",\r\n    \"description\":\"dddddddd\",\r\n    \"category\":\"etry\",\r\n    \"price\":45,\r\n    \"stock\":120\r\n    \r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/products/68e6be4c19d602ff99c36572",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"68e6be4c19d602ff99c36572"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProduct",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "addCategory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\"name\":\"eheeje\"}\r\n    \r\n"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/categories",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "allCatgeories",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\"name\":\"eheeje\"}\r\n    \r\n"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/categories",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCategory",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\"name\":\"eheeje\"}\r\n    \r\n"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/categories/68e785a34904983400ced109",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"categories",
+								"68e785a34904983400ced109"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCategory",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\"name\":\"dhhhhhhhhhhhhhhhhhhhhhhhhhhhhh\"}\r\n    \r\n"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/categories/68e785a34904983400ced109",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"categories",
+								"68e785a34904983400ced109"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeCategory",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

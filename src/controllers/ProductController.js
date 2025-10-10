@@ -3,7 +3,8 @@ class ProductController {
     getAllProduct = async (req, res) => {
         try {
 
-            const AllProduct = await Product.find();
+            const AllProduct = await Product.find({ isDeleted: false });
+
             if (!AllProduct) {
                 res.status(400).json({ message: "not found " });
             }
@@ -53,18 +54,30 @@ class ProductController {
             res.status(500).json({ error: err.message });
         }
     }
-    deleteProduct = async (req, res) => {
-        try {
-        const deletedProduct = await Product.findByIdAndDelete(req.params.id);
-if (!deletedProduct) return res.status(404).json({ message: "Product not found" });
-            res.status(200).json({ message: "deleted product",deletedProduct});
+   deleteProduct = async (req, res) => {
+  try {
+    const { id } = req.params; 
 
+   
+    const deletedProduct = await Product.findByIdAndUpdate(
+      id,
+      { isDeleted: true },
+      { new: true }
+    );
 
-        }
-        catch (err) {
-            res.status(500).json({ error: err.message });
-        }
+    if (!deletedProduct) {
+      return res.status(404).json({ message: "Product not found" });
     }
+
+    res.status(200).json({
+      message: "Product deleted successfully",
+      deletedProduct,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
     updateProduct = async (req, res) => {
         try {
             const ProductId = req.params.id;
