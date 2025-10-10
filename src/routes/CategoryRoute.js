@@ -5,6 +5,7 @@ const Controller= new CategoryController();
 const shema=require('../middlewares/Shema');
  const validateMiddlewares=require('../middlewares/validateMiddlewares');
  const validator= new validateMiddlewares();
+ 
 
  router.get('/',Controller.getAllCategories);
  router.post('/',validator.validate(shema.CategoryShema),Controller.createCatgeory);

@@ -4,7 +4,7 @@ dotenv.config();
 const  db =require('./config/db');
 
 const app=express();
-// const { swaggerUi, swaggerSpec } = require('./swagger');
+const { swaggerUi, swaggerSpec } = require('./swagger');
 const userRoutes=require('./src/routes/UserRoute');
 const productRoute=require('./src/routes/ProductRoute');
 const categoryRoute=require('./src/routes/CategoryRoute');
@@ -20,6 +20,7 @@ const PORT=process.env.PORT|| 9000;
  app.use('/users',userRoutes);
  app.use('/products',productRoute);
  app.use('/categories',categoryRoute);
+ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(logger);
 
 // Not Found
@@ -29,7 +30,7 @@ app.get('/', (req, res) => {
 });
 db();
 app.use(errorHandler);
-// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 app.listen(PORT,()=>{
     console.log(`server is running on port ${PORT}`);
 })
