@@ -124,7 +124,7 @@ router.get('/', Controller.getAllUsers);
 
 router.get('/', Controller.getAllUsers);
 router.get('/:id',Controller.getUser);
-router.post('/',validator.validate(shema.UserSchema),Controller.createUser);
+router.post('/',validator.validated(shema.UserSchema),Controller.createUser);
 router.delete('/:id',Controller.deleteUser);
 
 

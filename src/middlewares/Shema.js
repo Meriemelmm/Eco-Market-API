@@ -38,11 +38,17 @@ const ProductSchema = yup.object({
     // category: yup
     //     .string()
     //     .required('Category is required'),
-    categories: yup
-        .array()
-        .of(yup.string().length(24, 'Each category must be a valid ObjectId'))
-        .min(1, 'At least one category is required')
-        .required('Categories are required')
+  categories: yup
+  .array()
+  .of(
+    yup
+      .string()
+      .matches(/^[0-9a-fA-F]{24}$/, 'Chaque catégorie doit être un ID MongoDB valide')
+  )
+  .min(1, 'Au moins une catégorie est requise')
+  .required('Le champ categories est obligatoire')
+
+
 });
 const shema = { UserSchema, CategoryShema, ProductSchema };
 module.exports = shema;

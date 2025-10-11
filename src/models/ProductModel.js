@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 /**
  * @swagger
  * components:
@@ -66,12 +67,12 @@ const ProductShema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    category: {
-        type:String,
-        required:true
+    // category: {
+    //     type:String,
+    //     required:true
 
-    },
-     categories: { type: mongoose.Schema.Types.ObjectId, ref: 'Category',required: true  },
+    // },
+     categories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true }],
     imageUrl: {
         type: String,
         required: false,

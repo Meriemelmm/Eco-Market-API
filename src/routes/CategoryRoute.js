@@ -130,9 +130,9 @@ const shema=require('../middlewares/Shema');
 
 
  router.get('/',Controller.getAllCategories);
- router.post('/',validator.validate(shema.CategoryShema),Controller.createCatgeory);
+ router.post('/',validator.validated(shema.CategoryShema),Controller.createCatgeory);
  router.get('/:id',Controller.getCategory);
- router.put('/:id',validator.validate(shema.CategoryShema),Controller.updateCategory);
+ router.put('/:id',validator.validated(shema.CategoryShema),Controller.updateCategory);
  router.delete('/:id',Controller.deleteCategory);
 
 

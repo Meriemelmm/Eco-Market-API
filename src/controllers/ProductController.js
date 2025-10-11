@@ -15,11 +15,12 @@ class ProductController {
         }
     }
     createProdUct = async (req, res) => {
-        try {
+       
+        try { console.log("hdhdhd",req.body);
             const newProduct = await Product.create({
                 title: req.body.title,
                 description: req.body.description,
-                category: req.body.category,
+                // category: req.body.category,
                 price: req.body.price,
                 stock: req.body.stock,
                 imageUrl: req.body.imageUrl || "",
@@ -32,7 +33,7 @@ class ProductController {
 
         }
         catch (err) {
-            res.status(400).json({ error: err.message });
+            res.status(500).json({ error: err.message });
         }
 
 
