@@ -15,8 +15,9 @@ class ProductController {
         }
     }
     createProdUct = async (req, res) => {
-       
-        try { console.log("hdhdhd",req.body);
+
+        try {
+            console.log("hdhdhd", req.body);
             const newProduct = await Product.create({
                 title: req.body.title,
                 description: req.body.description,
@@ -105,6 +106,38 @@ class ProductController {
 
         }
     }
+  searchProduct = async (req, res) => {
+    try {
+        const { title, minPrice, maxPrice } = req.query;
+        let filter = { isDeleted: false };
+
+        // search par title
+        if (title) {
+            filter.title = { $regex: title, $options: 'i' };
+        }
+
+       
+
+        // filter par prix
+        if (minPrice || maxPrice) {
+            filter.price = {};
+            if (minPrice) filter.price.$gte = Number(minPrice);
+            if (maxPrice) filter.price.$lte = Number(maxPrice);
+        }
+
+        const products = await Product.find(filter)
+            .populate('categories', 'name');
+
+        res.status(200).json({
+            count: products.length,
+            products,
+        });
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+}
+
 
 
 

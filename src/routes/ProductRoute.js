@@ -145,10 +145,12 @@ const Controller=new ProductController();
  */
 
 router.get('/',Controller.getAllProduct);
+router.get('/search',Controller.searchProduct);
 router.post('/',validator.validated(shema.ProductSchema),Controller.createProdUct);
 router.get('/:id',Controller.getProduit);
 router.delete('/:id',Controller.deleteProduct);
 router.put('/:id',validator.validated(shema.ProductSchema),Controller.updateProduct);
+
 
 
 

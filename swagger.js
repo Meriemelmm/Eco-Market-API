@@ -23,6 +23,7 @@
            ],
      
        },
+       
        apis: [,'./src/routes/*.js','./src/models/*.js'], 
    };
    const swaggerSpec = swaggerJSDoc(swaggerOptions);
